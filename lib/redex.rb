@@ -1,5 +1,9 @@
 require "redex/version"
+require "helpers/configuration"
 
 module Redex
-  # Your code goes here...
+	extend Configuration
+
+	define_setting :secret_pv
+	define_setting :secret_token
 end
