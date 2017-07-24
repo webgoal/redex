@@ -8,4 +8,5 @@ module Redex
 
 	define_setting :secret_pv
 	define_setting :secret_token
+	define_setting :service_url, 'https://scommerce.userede.com.br/Redecard.Komerci.External.WcfKomerci/KomerciWcf.svc'
 end
