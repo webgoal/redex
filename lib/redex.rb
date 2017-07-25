@@ -1,4 +1,4 @@
-require 'ruby2soap'
+require 'canned_soap'
 
 require "redex/version"
 require "redex/request/base_request"
