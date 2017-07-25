@@ -3,6 +3,13 @@ module Redex::Request
 		def self.client
     	@client ||= CannedSoap::Client.new(Redex.service_url)
   	end
+
+		def authorization_params
+			{
+				Filiacao: Redex.secret_pv.to_s,
+				Senha: Redex.secret_token.to_s
+			}
+		end
 	end
 end
 
