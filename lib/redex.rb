@@ -1,3 +1,5 @@
+require 'ruby2soap'
+
 require "redex/version"
 require "redex/request/base_request"
 require "redex/response/base_response"
