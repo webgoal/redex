@@ -22,11 +22,6 @@ module Redex
 	      @origin = 1
 	    end
 
-			def run
-				raw_response = BaseRequest.client.GetAuthorizedCredit(request: sanitized_fields)
-				return Redex::Response::TransactionResponse(raw_response.result)
-			end
-
 			def sanitized_fields
 				{
 					NumPedido: sanitize(:order_id),
@@ -54,6 +49,12 @@ module Redex
 			end
 
 			private
+
+			def do_request
+				raw_response = BaseRequest.client.GetAuthorizedCredit(request: sanitized_fields)
+				p raw_response.result
+				Redex::Response::TransactionResponse.new(raw_response.result)
+			end
 
 			def transaction_type
 				return "74" unless @auto_capture

@@ -10,6 +10,10 @@ module Redex::Request
 				Senha: Redex.secret_token.to_s
 			}
 		end
+
+		def result
+			@result ||= do_request
+		end
 	end
 end
 
