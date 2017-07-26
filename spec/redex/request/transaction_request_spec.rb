@@ -51,20 +51,20 @@ module Redex::Request
       describe 'transaction_id' do
         context 'sem captura automática' do
           it 'o transaction_type deve ser 74' do
-            transaction = TransactionRequest.new()
+            transaction = TransactionRequest.new(auto_capture: false)
             expect(transaction.sanitize(:transaction_type)).to eq("74")
           end
         end
         context 'com captura automática' do
           context 'a vista' do
             it 'o transaction_type deve ser 04' do
-              transaction = TransactionRequest.new(auto_capture: true, installments: 1)
+              transaction = TransactionRequest.new(installments: 1)
               expect(transaction.sanitize(:transaction_type)).to eq("04")
             end
           end
           context 'parcelado' do
             it 'o transaction_type deve ser 08' do
-              transaction = TransactionRequest.new(auto_capture: true, installments: 3)
+              transaction = TransactionRequest.new(installments: 3)
               expect(transaction.sanitize(:transaction_type)).to eq("08")
             end
           end
