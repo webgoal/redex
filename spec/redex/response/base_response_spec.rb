@@ -6,11 +6,11 @@ module Redex::Response
 
     context 'parseando results' do
       it 'deve remover elementos nulos' do
-        expect(BaseResponse.clear(httpi_result)[:Cet]).to be_nil
+        expect(BaseResponse.new(httpi_result).raw[:Cet]).to be_nil
       end
 
       it 'deve remover o array' do
-        expect(BaseResponse.clear(httpi_result)[:CodRet]).to eq "00"
+        expect(BaseResponse.new(httpi_result).raw[:CodRet]).to eq "00"
       end
     end
   end
