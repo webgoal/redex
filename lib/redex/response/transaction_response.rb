@@ -7,7 +7,7 @@ module Redex
 				@code = cleaned_response[:CodRet].to_i
 				@message = cleaned_response[:Msgret]
 				@order_id = cleaned_response[:NumPedido]
-				@credit_card_authorization_id = cleaned_response[:NumAutor]
+				@credit_card_authorization_id = cleaned_response[:NumAutor].to_i
 				@sequential_id = cleaned_response[:NumSqn].to_i
 				@transaction_id = cleaned_response[:Tid].to_i
 				if cleaned_response[:Data] && cleaned_response[:Hora]

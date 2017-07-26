@@ -3,7 +3,7 @@ require "spec_helper"
 module Redex::Response
   RSpec.describe TransactionResponse do
     let(:httpi_result) { {"Cet"=>[{"i:nil"=>"true"}], "CodRet"=>["00"], "Data"=>["20170725"], "Hora"=>["16:22:17"],
-    "Juros"=>[{"i:nil"=>"true"}], "MsgAvs"=>[{"i:nil"=>"true"}], "Msgret"=>["Sucesso"], "NumAutor"=>["1BC3a4"],
+    "Juros"=>[{"i:nil"=>"true"}], "MsgAvs"=>[{"i:nil"=>"true"}], "Msgret"=>["Sucesso"], "NumAutor"=>["123123"],
     "NumPedido"=>["pedido123"], "NumSqn"=>["112233"], "RespAvs"=>[{"i:nil"=>"true"}], "Tid"=>["15462083544"],
     "ValParcelas"=>[{"i:nil"=>"true"}], "ValTotalJuros"=>[{"i:nil"=>"true"}]} }
 
@@ -26,7 +26,7 @@ module Redex::Response
     end
 
     it 'deve parsear numero da autorização da operadora do cartao' do
-      expect(transaction_response.credit_card_authorization_id).to eq("1BC3a4")
+      expect(transaction_response.credit_card_authorization_id).to eq(123123)
     end
 
     it 'deve parsear número sequência da rede' do

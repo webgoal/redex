@@ -39,20 +39,10 @@ module Redex
 				}.merge(authorization_params).sort.to_h
 			end
 
-			def sanitize(field)
-				return send(field).to_s if [:order_id].include?(field)
-				return "%.2f" % send(field) if [:amount].include?(field)
-				return "%02d" % send(field) if [:installments, :card_expiration_month, :origin].include?(field)
-				return card_expiration_year_sanitized if [:card_expiration_year].include?(field)
-				return field ? 1 : 0 if [:recorrence].include?(field)
-				send(field)
-			end
-
 			private
 
 			def do_request
 				raw_response = BaseRequest.client.GetAuthorizedCredit(request: sanitized_fields)
-				p raw_response.result
 				Redex::Response::TransactionResponse.new(raw_response.result)
 			end
 
