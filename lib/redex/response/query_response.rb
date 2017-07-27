@@ -6,7 +6,8 @@ module Redex
 				:invoice_note, :origin, :status, :transaction_created_at, :credit_card_authorization_id,
 				:code, :message
 			def initialize(httpi_response)
-				super(httpi_response[:REGISTRO])
+				p httpi_response
+				super(httpi_response["REGISTRO"])
 			end
 
 			def amount
@@ -74,11 +75,11 @@ module Redex
 			end
 
 
-
 			def clear(httpi_result)
+				httpi_result = httpi_result.first
 				httpi_result.delete("AVS")
 				httpi_result = Hash[httpi_result.map { |k, v| [k.to_sym, v] }]
-				httpi_result.select! {|k,v| v != [{}]}
+				httpi_result.select! {|k,v| v != [{}] && v!= [{"i:nil"=>"true"}]}
 				httpi_result.each { |k, v| httpi_result[k] = v.first }
 			end
 		end
