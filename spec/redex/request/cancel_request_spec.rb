@@ -22,7 +22,6 @@ module Redex::Request
         transaction = CancelRequest.new(transaction_id: 1234567890992912)
         expect(transaction.sanitize(:transaction_id)).to eq("1234567890992912")
       end
-
     end
   end
 end

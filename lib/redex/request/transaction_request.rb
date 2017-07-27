@@ -36,7 +36,7 @@ module Redex
 					Recorrente: sanitize(:recorrence),
 					Origem: sanitize(:origin),
 					Transacao: transaction_type
-				}.merge(authorization_params).sort.to_h
+				}.merge(authorization_params).sort.to_h.select { |k, v| !v.to_s.empty?  }
 			end
 
 			private

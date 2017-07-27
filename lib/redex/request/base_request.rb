@@ -16,6 +16,7 @@ module Redex::Request
 		end
 
 		def sanitize(field)
+			return nil unless send(field)
 			return "%.2f" % send(field) if [:amount].include?(field)
 			return "%02d" % send(field) if [:installments, :card_expiration_month, :origin].include?(field)
 			return card_expiration_year_sanitized if [:card_expiration_year].include?(field)
@@ -29,3 +30,4 @@ end
 
 require 'redex/request/transaction_request'
 require 'redex/request/cancel_request'
+require 'redex/request/query_request'
