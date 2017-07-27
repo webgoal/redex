@@ -2,24 +2,17 @@ require "spec_helper"
 
 module Redex::Response
   RSpec.describe QueryResponse do
-    let(:httpi_result) { {"HEADER"=>[{"DATA_REQUISICAO"=>["20170727"],
-      "FILIACAO"=>[{"i:nil"=>"true"}], "HORA_REQUISICAO"=>["17:14:46"]}],
-      "REGISTRO"=>[{"AVS"=>[{"CEP"=>[{"i:nil"=>"true"}],
-      "COMPLEMENTO"=>[{"i:nil"=>"true"}], "CPF"=>[{"i:nil"=>"true"}],
-      "ENDERECO"=>[{"i:nil"=>"true"}], "MSG_AVS"=>[{"i:nil"=>"true"}],
-      "NU_ENDERECO"=>[{"i:nil"=>"true"}], "RESP_AVS"=>[{"i:nil"=>"true"}]}],
-      "COD_RET"=>["26"], "DATA"=>[{"i:nil"=>"true"}], "DATA_CANC"=>[{"i:nil"=>"true"}],
-      "DATA_CON_PRE_AUT"=>[{"i:nil"=>"true"}], "DATA_EXP_PRE_AUT"=>[{"i:nil"=>"true"}],
-      "FILIACAO_DSTR"=>[{"i:nil"=>"true"}], "HORA"=>[{"i:nil"=>"true"}],
-      "IDENTIFICACAOFATURA"=>[{"i:nil"=>"true"}], "MOEDA"=>[{"i:nil"=>"true"}],
-      "MSG_RET"=>["Campo Filiacao ausente"], "NOM_PORTADOR"=>[{"i:nil"=>"true"}],
-      "NR_CARTAO"=>[{"i:nil"=>"true"}], "NUMAUTOR"=>[{"i:nil"=>"true"}],
-      "NUMPEDIDO"=>[{"i:nil"=>"true"}], "NUMSQN"=>[{"i:nil"=>"true"}],
-      "ORIGEM"=>[{"i:nil"=>"true"}], "PARCELAS"=>[{"i:nil"=>"true"}],
-      "STATUS"=>[{"i:nil"=>"true"}], "TAXA_EMBARQUE"=>[{"i:nil"=>"true"}],
-      "TID"=>[{"i:nil"=>"true"}], "TOTAL"=>[{"i:nil"=>"true"}],
-      "TRANSACAO"=>[{"i:nil"=>"true"}], "_x0033_DS"=>[{"CAVV"=>[{"i:nil"=>"true"}],
-      "ECI"=>[{"i:nil"=>"true"}], "XID"=>[{"i:nil"=>"true"}]}]}]} }
+    let(:httpi_result) { {"HEADER"=>[{"DATA_REQUISICAO"=>["20170727"], "FILIACAO"=>["50079557"],
+      "HORA_REQUISICAO"=>["18:04:49"]}], "REGISTRO"=>[{"AVS"=>[{"CEP"=>[{}], "COMPLEMENTO"=>[{}],
+      "CPF"=>[{}], "ENDERECO"=>[{}], "MSG_AVS"=>[{}], "NU_ENDERECO"=>[{}], "RESP_AVS"=>[{}]}],
+      "COD_RET"=>["00"], "DATA"=>["20170727"], "DATA_CANC"=>[{}], "DATA_CON_PRE_AUT"=>[{}],
+      "DATA_EXP_PRE_AUT"=>[{}], "FILIACAO_DSTR"=>["0"], "HORA"=>["15:00:01"],
+      "IDENTIFICACAOFATURA"=>["Teste-Renovacao"], "MOEDA"=>["Real"],
+      "MSG_RET"=>["Sucesso"],
+      "NOM_PORTADOR"=>["Aluanetraiu"], "NR_CARTAO"=>["544828XXXXXX0007"], "NUMAUTOR"=>["219947"],
+      "NUMPEDIDO"=>["a123123"], "NUMSQN"=>["90739"], "ORIGEM"=>["1"],
+      "PARCELAS"=>["07"], "STATUS"=>["3"], "TAXA_EMBARQUE"=>["0.00"], "TID"=>["25458348536"],
+      "TOTAL"=>["5009.00"], "TRANSACAO"=>["4"], "_x0033_DS"=>[{"CAVV"=>[{}], "ECI"=>[{}], "XID"=>[{}]}]}]} }
 
     let(:transaction_response) { QueryResponse.new(httpi_result) }
 
@@ -45,10 +38,6 @@ module Redex::Response
 
     it 'deve parsear o numero sequencia da rede' do
       expect(transaction_response.sequential_id).to eq(90739)
-    end
-
-    it 'deve parsear o mês de validade do cartao' do
-      expect(transaction_response.card_expiration_month).to eq(3)
     end
 
     it 'deve parsear o nome do portador do cartao' do

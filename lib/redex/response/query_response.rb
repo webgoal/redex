@@ -6,7 +6,6 @@ module Redex
 				:invoice_note, :origin, :status, :transaction_created_at, :credit_card_authorization_id,
 				:code, :message
 			def initialize(httpi_response)
-				p httpi_response
 				super(httpi_response["REGISTRO"])
 			end
 
