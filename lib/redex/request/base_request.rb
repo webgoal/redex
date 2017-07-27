@@ -21,7 +21,7 @@ module Redex::Request
 			return "%02d" % send(field) if [:installments, :card_expiration_month, :origin].include?(field)
 			return card_expiration_year_sanitized if [:card_expiration_year].include?(field)
 			return send(field) ? "1" : "0" if [:recorrence].include?(field)
-			return send(field).to_s if [:order_id, :credit_card_authorization_id, :sequential_id, :transaction_id].include?(field)
+			return send(field).to_s if [:order_id, :credit_card_authorization_id, :sequential_id, :transaction_id, :card_number].include?(field)
 			return send(field).strftime("%Y%m%d") if [:transaction_date].include?(field)
 			send(field)
 		end
