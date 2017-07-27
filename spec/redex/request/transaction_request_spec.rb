@@ -48,6 +48,13 @@ module Redex::Request
         expect(transaction.sanitize(:origin)).to eq("01")
       end
 
+      context 'com recorrente falso' do
+        it 'deve retornar 0' do
+          transaction = TransactionRequest.new()
+          expect(transaction.sanitize(:recorrence)).to eq("0")
+        end
+      end
+
       describe 'transaction_id' do
         context 'sem captura automática' do
           it 'o transaction_type deve ser 74' do

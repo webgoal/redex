@@ -40,3 +40,4 @@ end
 
 require 'redex/response/transaction_response'
 require 'redex/response/cancel_response'
+require 'redex/response/query_response'
