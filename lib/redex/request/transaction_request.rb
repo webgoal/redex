@@ -18,7 +18,7 @@ module Redex
 				@card_expiration_month = params[:card_expiration_month]
 				@card_expiration_year = params[:card_expiration_year]
 				@auto_capture = params.fetch(:auto_capture, true)
-	      @recorrence = false
+	      @recorrence = params.fetch(:recorrence, false)
 	      @origin = 1
 	    end
 
