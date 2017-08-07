@@ -6,7 +6,7 @@ require "redex/version"
 Gem::Specification.new do |spec|
   spec.name          = "redex"
   spec.version       = Redex::VERSION
-  spec.authors       = ["Ateliê de Software - Webgoal", "Aluan Henrique" "Gustavo Canedo"]
+  spec.authors       = ["Ateliê de Software - Webgoal", "Aluan Henrique", "Gustavo Canedo"]
   spec.email         = ["contato@atelie.software"]
 
   spec.summary       = %q{Uma gem para integração com o sistema de pagamentos eRede}
