@@ -6,11 +6,11 @@ require "redex/version"
 Gem::Specification.new do |spec|
   spec.name          = "redex"
   spec.version       = Redex::VERSION
-  spec.authors       = ["Gustavo Canedo"]
-  spec.email         = ["gknedo@gmail.com"]
+  spec.authors       = ["Ateliê de Software - Webgoal", "Aluan Henrique" "Gustavo Canedo"]
+  spec.email         = ["contato@atelie.software"]
 
   spec.summary       = %q{Uma gem para integração com o sistema de pagamentos eRede}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/webgoal/redex"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
