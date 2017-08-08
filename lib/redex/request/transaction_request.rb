@@ -48,7 +48,7 @@ module Redex
 
 			def transaction_type
 				return "74" unless @auto_capture
-				return "08" if installments > 1
+				return "08" if installments.to_i > 1
 				"04"
 			end
 

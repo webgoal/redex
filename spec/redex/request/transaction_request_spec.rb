@@ -13,9 +13,16 @@ module Redex::Request
         expect(transaction.sanitize(:amount)).to eq("10.00")
       end
 
-      it 'installments deve ser uma string com 2 caracteres' do
-        transaction = TransactionRequest.new(installments: 8)
-        expect(transaction.sanitize(:installments)).to eq("08")
+      describe 'installments' do
+        it 'deve ser uma string com 2 caracteres' do
+          transaction = TransactionRequest.new(installments: 8)
+          expect(transaction.sanitize(:installments)).to eq("08")
+        end
+
+        it 'deve permitir um valor em string' do
+          transaction = TransactionRequest.new(installments: "8")
+          expect(transaction.sanitize(:installments)).to eq("08")
+        end
       end
 
       it 'installments deve ser uma string com 2 caracteres' do
@@ -77,6 +84,11 @@ module Redex::Request
             it 'o transaction_type deve ser 04' do
               transaction = TransactionRequest.new(installments: 1)
               expect(transaction.sanitize(:transaction_type)).to eq("04")
+            end
+
+            it 'não deve quebrar se quantidade de parcelas for uma string' do
+              transaction = TransactionRequest.new(installments: "1")
+              expect{transaction.sanitize(:transaction_type)}.not_to raise_error
             end
           end
           context 'parcelado' do
