@@ -33,14 +33,24 @@ module Redex::Request
         expect(transaction.sanitize(:card_expiration_month)).to eq("12")
       end
 
-      it 'card_expiration_year deve ser uma string com 4 caracteres' do
-        transaction = TransactionRequest.new(card_expiration_year: 2018)
-        expect(transaction.sanitize(:card_expiration_year)).to eq("2018")
-      end
+      describe 'card_expiration_year' do
+        it 'deve transformar um inteiro em string com 4 caracteres' do
+          transaction = TransactionRequest.new(card_expiration_year: 2018)
+          expect(transaction.sanitize(:card_expiration_year)).to eq("2018")
+        end
 
-      it 'card_expiration_year deve ser uma string com 4 caracteres' do
-        transaction = TransactionRequest.new(card_expiration_year: 18)
-        expect(transaction.sanitize(:card_expiration_year)).to eq("2018")
+        it 'deve adicionar o milénio caso receba somente a década e ano' do
+          transaction = TransactionRequest.new(card_expiration_year: 18)
+          expect(transaction.sanitize(:card_expiration_year)).to eq("2018")
+        end
+
+        it 'deve permitir uma string como entrada' do
+          transaction = TransactionRequest.new(card_expiration_year: "2018")
+          expect(transaction.sanitize(:card_expiration_year)).to eq("2018")
+          transaction = TransactionRequest.new(card_expiration_year: "18")
+          expect(transaction.sanitize(:card_expiration_year)).to eq("2018")
+        end
+
       end
 
       it 'origin deve ser o código do eRede' do

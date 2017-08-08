@@ -53,7 +53,7 @@ module Redex
 			end
 
 			def card_expiration_year_sanitized
-				year = card_expiration_year
+				year = card_expiration_year.to_i
 				year += 2000 if year < 100
 				year.to_s
 			end
