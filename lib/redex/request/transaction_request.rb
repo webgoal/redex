@@ -2,7 +2,7 @@ module Redex
 	module Request
 		class TransactionRequest < BaseRequest
 			attr_accessor :order_id, :amount, :installments, :invoice_note,
-										:card_number, :card_cvc, :card_holder_name,
+										:card_number, :card_cvv, :card_holder_name,
 										:card_expiration_month, :card_expiration_year,
 										:auto_capture
 			attr_reader :recorrence, :origin
@@ -13,7 +13,7 @@ module Redex
 				@installments = params.fetch(:installments, 1)
 				@invoice_note = params[:invoice_note]
 				@card_number = params[:card_number]
-				@card_cvc = params[:card_cvc]
+				@card_cvv = params[:card_cvv]
 				@card_holder_name = params[:card_holder_name]
 				@card_expiration_month = params[:card_expiration_month]
 				@card_expiration_year = params[:card_expiration_year]
@@ -29,7 +29,7 @@ module Redex
 					Parcelas: sanitize(:installments),
 					IdentificacaoFatura: sanitize(:invoice_note),
 					Nrcartao: sanitize(:card_number),
-					Cvc2: sanitize(:card_cvc),
+					Cvc2: sanitize(:card_cvv),
 					Portador: sanitize(:card_holder_name),
 					Mes: sanitize(:card_expiration_month),
 					Ano: sanitize(:card_expiration_year),

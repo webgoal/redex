@@ -81,7 +81,7 @@ Requests são feitas utilizando a classe `Redex::Request::TransactionRequest`.
 | amount | Integer ou Float | TOTAL
 | card_number | Integer ou String | NRCARTAO |
 | card_holder_name | String | PORTADOR |
-| card_cvc | Integer ou String | CVC2 |
+| card_cvv | Integer ou String | CVC2 |
 | card_expiration_month | Integer ou String | MÊS
 | card_expiration_year | Integer ou String | ANO
 | installments | Integer ou String | PARCELAS | Padrão: 1
